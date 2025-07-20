@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>對不起，寶</title>
+
+  <!-- 連結外部樣式 -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 遮罩層 -->
+  <div id="overlay">
+    <h2>杰豪認真的對不起你</h2>
+    <p>記得開聲音</p>
+    <p style="margin-top: 40px; font-size: 1.2em;">點擊任意處開始播放音樂</p>
+  </div>
+
+  <div class="container">
+    <h1>寶，對不起</h1>
+    <p class="apology">妳一定覺得杰儫很差勁，今天做了這麼不好的事…</p>
+    <p class="message">
+      杰儫真的感到十分抱歉，因為自己的疏忽讓妳超級不開心。<br /><br />
+      我答應妳，下次不會這樣，也不會有下次。<br />
+      雖然我不太會表達，但我還是有學一點點。<br /><br />
+      希望妳能原諒我，好嗎？
+    </p>
+    
+    <p class="final">杰儫會一直努力成為更好的人，只為了妳。<br />我真的很愛妳。</p>
+
+    <!-- 照片 -->
+    <img src="your-photo.jpg" alt="我們的合照" class="photo" />
+
+    <!-- 背景音樂 -->
+    <audio autoplay loop muted id="bg-music">
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- 飄落愛心容器 -->
+  <div class="hearts-container"></div>
+
+  <!-- 連結外部腳本 -->
+  <script src="script.js"></script>
+</body>
+</html>

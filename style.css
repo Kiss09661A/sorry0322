@@ -1,0 +1,147 @@
+/* 背景與基本樣式 */
+body {
+  margin: 0;
+  padding: 0;
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.container {
+  margin-top: 50px;
+  padding: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 3em;
+  color: #e1a9ec;
+  text-shadow: 0 0 8px #ff6f61;
+}
+
+.apology {
+  font-size: 1.5em;
+  margin-top: 20px;
+  text-shadow: 0 0 5px #000;
+}
+
+.message {
+  margin: 30px 0;
+  font-size: 1.2em;
+  color: #f0e6e6;
+  text-shadow: 0 0 5px #000;
+}
+
+.final {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-shadow: 0 0 5px #000;
+}
+
+.photo {
+  margin-top: 30px;
+  width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border: 3px solid #fff;
+}
+
+/* 遮罩層 */
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  user-select: none;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+#overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#overlay h2 {
+  font-size: 3em;
+  margin: 0 0 20px 0;
+  text-shadow: 0 0 8px #ff6f61;
+}
+
+#overlay p {
+  font-size: 1.5em;
+  margin: 0;
+  text-shadow: 0 0 5px #000;
+}
+
+/* 飄落愛心動畫 */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8888;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  top: -2rem;
+  color: #ff6699;
+  font-size: clamp(1rem, 2vw, 2rem);
+  animation: fall linear forwards, sway ease-in-out infinite;
+  pointer-events: none;
+  opacity: 1;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1.5rem);
+  }
+  100% {
+    transform: translateX(-1.5rem);
+  }
+}
