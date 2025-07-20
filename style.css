@@ -2,27 +2,33 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('bg.jpg') no-repeat center center;
+  position: relative;
+  min-height: 100vh;
+  background: url('https://kiss09661a.github.io/sorry0214/bg.jpg') no-repeat center center;
   background-size: cover;
-  background-attachment: scroll; /* ← 加這行確保手機也支援 */
+  background-attachment: scroll; /* 手機友善 */
   font-family: 'Arial', sans-serif;
   color: #fff;
   text-align: center;
-  position: relative;
-  min-height: 100vh;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
 }
 
-
+/* 遮罩層，改成 absolute 並調整 z-index */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
+  z-index: 0;
+  pointer-events: none;
 }
 
+/* 內容容器提升層級，避免被遮罩蓋住 */
 .container {
+  position: relative;
+  z-index: 1;
   margin-top: 50px;
   padding: 20px;
   max-width: 600px;
@@ -64,7 +70,7 @@ h1 {
   border: 3px solid #fff;
 }
 
-/* 遮罩層 */
+/* 遮罩層覆蓋 */
 #overlay {
   position: fixed;
   top: 0; left: 0;
@@ -147,7 +153,12 @@ h1 {
     transform: translateX(-1.5rem);
   }
 }
+
+/* 手機響應式 */
 @media (max-width: 768px) {
+  body {
+    background-position: top center; /* 手機背景靠上 */
+  }
   h1 {
     font-size: 2.2em;
   }
