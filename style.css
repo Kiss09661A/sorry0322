@@ -1,31 +1,30 @@
-/* 背景與基本樣式 */
-body {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  min-height: 100vh;
+/* === 背景圖層 === */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: url('https://kiss09661a.github.io/sorry0214/bg.jpg') no-repeat center center;
   background-size: cover;
-  background-attachment: scroll; /* 手機友善 */
-  font-family: 'Arial', sans-serif;
-  color: #fff;
-  text-align: center;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-}
-
-/* 遮罩層，改成 absolute 並調整 z-index */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 
-/* 內容容器提升層級，避免被遮罩蓋住 */
+/* === 全域設定 === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  overflow-x: hidden;
+}
+
+/* === 主要內容容器 === */
 .container {
   position: relative;
   z-index: 1;
@@ -36,6 +35,7 @@ body::before {
   margin-right: auto;
 }
 
+/* === 標題與訊息 === */
 h1 {
   font-size: 3em;
   color: #e1a9ec;
@@ -62,6 +62,7 @@ h1 {
   text-shadow: 0 0 5px #000;
 }
 
+/* === 圖片樣式 === */
 .photo {
   margin-top: 30px;
   width: 200px;
@@ -70,13 +71,14 @@ h1 {
   border: 3px solid #fff;
 }
 
-/* 遮罩層覆蓋 */
+/* === 遮罩層 === */
 #overlay {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -109,7 +111,7 @@ h1 {
   text-shadow: 0 0 5px #000;
 }
 
-/* 飄落愛心動畫 */
+/* === 飄落愛心動畫容器 === */
 .hearts-container {
   position: fixed;
   top: 0;
@@ -121,6 +123,7 @@ h1 {
   overflow: hidden;
 }
 
+/* === 愛心單體樣式 === */
 .heart {
   position: absolute;
   top: -2rem;
@@ -131,6 +134,7 @@ h1 {
   opacity: 1;
 }
 
+/* === 下落動畫 === */
 @keyframes fall {
   0% {
     transform: translateY(0) scale(1);
@@ -142,6 +146,7 @@ h1 {
   }
 }
 
+/* === 左右搖擺動畫 === */
 @keyframes sway {
   0% {
     transform: translateX(0);
@@ -154,18 +159,20 @@ h1 {
   }
 }
 
-/* 手機響應式 */
+/* === 手機響應式設定 === */
 @media (max-width: 768px) {
-  body {
-    background-position: top center; /* 手機背景靠上 */
-  }
   h1 {
     font-size: 2.2em;
   }
-  .apology, .message, .final {
+  .apology,
+  .message,
+  .final {
     font-size: 1.1em;
   }
   .photo {
     width: 80%;
+  }
+  .bg {
+    background-position: top center; /* 手機上向上對齊背景重點 */
   }
 }
