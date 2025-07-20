@@ -2,14 +2,16 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('bg.jpg') no-repeat center center fixed;
+  background: url('bg.jpg') no-repeat center center;
   background-size: cover;
+  background-attachment: scroll; /* ← 加這行確保手機也支援 */
   font-family: 'Arial', sans-serif;
   color: #fff;
   text-align: center;
   position: relative;
   min-height: 100vh;
 }
+
 
 body::before {
   content: "";
@@ -143,5 +145,16 @@ h1 {
   }
   100% {
     transform: translateX(-1.5rem);
+  }
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2em;
+  }
+  .apology, .message, .final {
+    font-size: 1.1em;
+  }
+  .photo {
+    width: 80%;
   }
 }
